@@ -9,7 +9,7 @@ import java.util.Optional;
 @SpringBootApplication
 @RestController
 @RequestMapping("api/v_01/words")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class RootController {
     private final ArRootRepository arRootRepository;
 
