@@ -1,6 +1,7 @@
-package com.khariit;
+package com.khariit.dao;
 import java.util.List;
 
+import com.khariit.models.Root;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ArRootRepository

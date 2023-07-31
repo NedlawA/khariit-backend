@@ -1,4 +1,4 @@
-package com.khariit;
+package com.khariit.models;
 
 import jakarta.persistence.*;
 
