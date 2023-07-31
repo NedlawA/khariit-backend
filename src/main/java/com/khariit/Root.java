@@ -20,10 +20,10 @@ public class Root {
     private String letters;
     private String engLetters;
 
-    public Root(Integer id, String letters, String eng_letters) {
+    public Root(Integer id, String letters, String engLetters) {
         this.id = id;
         this.letters = letters;
-        this.engLetters = eng_letters;
+        this.engLetters = engLetters;
     }
 
     public Root() {
@@ -68,7 +68,7 @@ public class Root {
         return "Root{" +
                 "id=" + id +
                 ", letters='" + letters + '\'' +
-                ", eng_def='" + engLetters + '\'' +
+                ", engLetters='" + engLetters + '\'' +
                 '}';
     }
 }

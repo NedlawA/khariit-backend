@@ -2,6 +2,7 @@ package com.khariit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,19 @@ public class Main {
     @GetMapping
     public List<Root> getRoots() {
         return arRootRepository.findAll();
+    }
+
+    @GetMapping("/en_letters")
+    @ResponseBody
+    public String getWordByIdUsingEngRootLetters(@RequestParam String engLetters) {
+//        return arRootRepository.findByEngLetters(engLetters).get(0).getLetters();
+        return arRootRepository.findByEngLetters(engLetters).toString();
+    }
+
+    @GetMapping("/ar_letters")
+    @ResponseBody
+    public String getWordByIdUsingArRootLetters(@RequestParam String letters) {
+        return arRootRepository.findByLetters(letters).toString();
     }
 
     record AddRootRequest(
