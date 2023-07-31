@@ -3,8 +3,10 @@ package com.khariit.models;
 import jakarta.persistence.*;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@Table(name = "ROOT")
 public class Root {
     @Id
     @SequenceGenerator(
@@ -16,14 +18,21 @@ public class Root {
             strategy = GenerationType.SEQUENCE,
             generator = "root_id_sequence"
     )
-    private Integer id;
+
+    public Integer id;
+    @OneToMany(mappedBy = "root")
+    private Set<Form> forms;
     private String letters;
     private String engLetters;
+
+
 
     public Root(Integer id, String letters, String engLetters) {
         this.id = id;
         this.letters = letters;
         this.engLetters = engLetters;
+
+
     }
 
     public Root() {
