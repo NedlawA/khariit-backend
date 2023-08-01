@@ -10,15 +10,7 @@ import java.util.Objects;
 public class Form {
 
     @Id
-    @SequenceGenerator(
-            name = "form_id_sequence",
-            sequenceName = "form_id_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "form_id_sequence"
-    )
+    @GeneratedValue
     @Column(name="id")
     private Integer id;
     @ManyToOne
@@ -37,6 +29,7 @@ public class Form {
 
     public Form() {
     }
+
     public Integer getId() {
         return id;
     }
@@ -45,12 +38,12 @@ public class Form {
         this.id = id;
     }
 
+    public Root getRoot() {
+        return root;
+    }
 
-    public Integer getRootId() {
-        return root.id;}
-
-    public void setRootId(Integer root_id) {
-        this.root.id = root_id;
+    public void setRoot(Root root) {
+        this.root = root;
     }
 
     public String getFormVer() {
@@ -64,6 +57,7 @@ public class Form {
     public String getEngDef() {
         return engDef;
     }
+
     public void setEngDef(String engDef) {
         this.engDef = engDef;
     }
@@ -73,18 +67,19 @@ public class Form {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Form form = (Form) o;
-        return Objects.equals(id, form.id) && Objects.equals(formVer, form.formVer) && Objects.equals(engDef, form.engDef);
+        return Objects.equals(id, form.id) && Objects.equals(root, form.root) && Objects.equals(formVer, form.formVer) && Objects.equals(engDef, form.engDef);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, formVer, engDef);
+        return Objects.hash(id, root, formVer, engDef);
     }
 
     @Override
     public String toString() {
-        return "Root{" +
+        return "Form{" +
                 "id=" + id +
+                ", root=" + root +
                 ", formVer='" + formVer + '\'' +
                 ", engDef='" + engDef + '\'' +
                 '}';
