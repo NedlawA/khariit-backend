@@ -1,6 +1,7 @@
 package com.khariit.controllers;
 
 import com.khariit.dao.ArRootRepository;
+import com.khariit.models.Form;
 import com.khariit.models.Root;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
@@ -24,15 +25,14 @@ public class RootController {
 
     @GetMapping("/en_letters")
     @ResponseBody
-    public String getWordByIdUsingEngRootLetters(@RequestParam String engLetters) {
-//        return arRootRepository.findByEngLetters(engLetters).get(0).getLetters();
-        return arRootRepository.findByEngLetters(engLetters).toString();
+    public Iterable getWordByIdUsingEngRootLetters(@RequestParam String engLetters) {
+        return arRootRepository.findByEngLetters(engLetters);
     }
 
     @GetMapping("/ar_letters")
     @ResponseBody
-    public String getWordByIdUsingArRootLetters(@RequestParam String letters) {
-        return arRootRepository.findByLetters(letters).toString();
+    public Iterable getWordByIdUsingArRootLetters(@RequestParam String letters) {
+        return arRootRepository.findByLetters(letters);
     }
 
     record AddRootRequest(

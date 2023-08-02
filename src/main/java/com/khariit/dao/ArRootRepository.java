@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ArRootRepository
     extends JpaRepository<Root, Integer> {
 
-    List<Root> findByEngLetters(String engLetters);
-    List<Root> findByLetters(String letters);
+    Iterable findByEngLetters(String engLetters);
+    Iterable findByLetters(String letters);
 
 }
