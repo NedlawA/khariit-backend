@@ -20,10 +20,13 @@ public class Form {
     private String formVer;
     private String engDef;
 
-    public Form(Integer id, String formVer, String engDef, Integer rootId) {
+    private String engLetters;
+
+    public Form(Integer id, String formVer, String engDef, String engLetters, Integer rootId) {
         this.id = id;
         this.formVer = formVer;
         this.engDef = engDef;
+        this.engLetters = engLetters;
         this.root.id = rootId;
     }
 
@@ -62,17 +65,25 @@ public class Form {
         this.engDef = engDef;
     }
 
+    public String getEngLetters() {
+        return engLetters;
+    }
+
+    public void setEngLetters(String engLetters) {
+        this.engLetters = engLetters;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Form form = (Form) o;
-        return Objects.equals(id, form.id) && Objects.equals(root, form.root) && Objects.equals(formVer, form.formVer) && Objects.equals(engDef, form.engDef);
+        return Objects.equals(id, form.id) && Objects.equals(root, form.root) && Objects.equals(formVer, form.formVer) && Objects.equals(engDef, form.engDef) && Objects.equals(engLetters, form.engLetters);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, root, formVer, engDef);
+        return Objects.hash(id, root, formVer, engDef, engLetters);
     }
 
     @Override
@@ -82,6 +93,7 @@ public class Form {
                 ", root=" + root +
                 ", formVer='" + formVer + '\'' +
                 ", engDef='" + engDef + '\'' +
+                ", engLetters='" + engLetters + '\'' +
                 '}';
     }
 }

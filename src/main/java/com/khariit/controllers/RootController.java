@@ -1,10 +1,13 @@
 package com.khariit.controllers;
 
 import com.khariit.dao.ArRootRepository;
-import com.khariit.models.Form;
+import com.khariit.dao.FormRepository;
+
 import com.khariit.models.Root;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 @SpringBootApplication
@@ -13,9 +16,11 @@ import java.util.Optional;
 @CrossOrigin
 public class RootController {
     private final ArRootRepository arRootRepository;
+    private final FormRepository formRepository;
 
-    public RootController(ArRootRepository arRootRepository) {
+    public RootController(ArRootRepository arRootRepository, FormRepository formRepository) {
         this.arRootRepository = arRootRepository;
+        this.formRepository = formRepository;
     }
 
     @GetMapping
@@ -40,6 +45,18 @@ public class RootController {
             String engLetters
     ) {
     }
+
+    @GetMapping("{rootId}/forms")
+    public List getForms(@PathVariable("rootId") Integer id ) {
+        Optional<Root> obj = arRootRepository.findById(id);
+        if (obj.isPresent()) {
+            Root root = obj.get();}
+
+    return Collections.singletonList(formRepository.findByRootId(id));
+
+
+    }
+
 
     @PostMapping
     public void addRoot(@RequestBody com.khariit.controllers.RootController.AddRootRequest request) {

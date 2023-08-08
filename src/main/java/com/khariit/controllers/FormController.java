@@ -27,7 +27,8 @@ import java.util.Optional;
         record AddFormRequest(
                 Integer root_id,
                 String formVer,
-                String engDef
+                String engDef,
+                String engLetters
         ) {
         }
 
@@ -40,6 +41,7 @@ import java.util.Optional;
             form.setRoot(root);
             form.setFormVer(request.formVer());
             form.setEngDef(request.engDef());
+            form.setEngLetters(request.engLetters());
             formRepository.save(form);
         }
 }
