@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/khariit
-    username: postgres
-    password: PASSWORD
+    url: jdbc:postgresql://dpg-cj9bocavvtos73dbfsr0-a.oregon-postgres.render.com/ar_root_db
+    username: ar_root_db_user
+    password: n0EZP0C1IoQ5aAkT5iNm1Ad3JRWUSZAE
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,3 +17,4 @@ spring:
 
   main:
     web-application-type: servlet
+
