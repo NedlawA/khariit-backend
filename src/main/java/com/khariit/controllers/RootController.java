@@ -42,7 +42,8 @@ public class RootController {
 
     record AddRootRequest(
             String letters,
-            String engLetters
+            String engLetters,
+            String verbNoun
     ) {
     }
 
@@ -76,6 +77,8 @@ public class RootController {
             }
             if (updateRequest.engLetters !=null) {
                 root.setEngLetters(updateRequest.engLetters());
+            }if (updateRequest.verbNoun !=null) {
+                root.setVerbNoun(updateRequest.verbNoun());
             }
             arRootRepository.save(root);
         }
