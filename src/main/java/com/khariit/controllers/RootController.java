@@ -31,7 +31,14 @@ public class RootController {
     @GetMapping("/en_letters")
     @ResponseBody
     public Iterable getWordByIdUsingEngRootLetters(@RequestParam String engLetters) {
-        return arRootRepository.findByEngLetters(engLetters);
+        try {
+            engLetters = engLetters.toLowerCase();
+            engLetters = engLetters.replaceAll("\\s+", "");
+            engLetters = engLetters.trim();
+            return arRootRepository.findByEngLetters(engLetters);
+        } catch (Exception e) {
+            return List.of(new String[]{"Something went wrong.", "message"});
+        }
     }
 
     @GetMapping("/ar_letters")
@@ -64,6 +71,7 @@ public class RootController {
         Root root = new Root();
         root.setLetters(request.letters());
         root.setEngLetters(request.engLetters());
+        root.setVerbNoun(request.verbNoun());
         arRootRepository.save(root);
     }
 
